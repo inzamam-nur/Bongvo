@@ -11,6 +11,9 @@ const Header = () => {
       .then(() => {})
       .catch((e) => {});
   };
+  const seeuser=()=>{
+    <h1>inzamam</h1>
+  }
   return (
     <div>
       <header>
@@ -33,7 +36,7 @@ const Header = () => {
 
                   {user?.photoURL ? (
                     <>
-                      <img style={{ height: "30px"}} className='mr-5 rounded-full' src={user?.photoURL} alt="" />
+                      <img onMouseOver={seeuser} style={{ height: "30px"}} className='mr-5 rounded-full' src={user?.photoURL} alt="" />
                     </>
                   ) : (
                     <>
@@ -118,14 +121,14 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                  <Link to='/blog' className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
                     Blog
                   </Link>
                 </li>
 
                 <li>
-                  <Link className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
-                    Faq
+                  <Link to='/faq' className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                    FAQ
                   </Link>
                 </li>
               </ul>

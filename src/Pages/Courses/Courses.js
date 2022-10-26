@@ -22,7 +22,7 @@ const Courses = ({course}) => {
                 ></CourseCard>)
             }
         </div>
-        <div className="text-center"><Rightsidenav></Rightsidenav></div>
+        <div  style={{width:'80%', margin:'50px auto'}} ><Rightsidenav></Rightsidenav></div>
       </div>
     </div>
   );
