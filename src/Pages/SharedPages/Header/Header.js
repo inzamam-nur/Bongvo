@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
-    const {user}=useContext(AuthContext)
+    const {user,logout}=useContext(AuthContext)
+    const handlelogout=()=>{
+      logout()
+      .then(()=>{})
+      .catch((e)=>{})
+    }
   return (
     <div className="sticky ">
       <div  className="navbar text-white bg-black	">
@@ -26,7 +31,7 @@ const Header = () => {
                  : 
                   < FaUserAlt className="align-middle"></FaUserAlt>
                 }
-            <button >Logout</button>
+            <button onClick={handlelogout}>Logout</button>
             
               </>
               :
