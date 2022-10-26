@@ -78,12 +78,29 @@ const Login = () => {
                               style={{ backgroundColor: "rgb(189,156,28)" }}
                               className="btn btn-primary border-none"
                             >
-                              SignIn
+                              SignUp
                             </button>
                           </div>
                          
                         </div>
-                        
+                        <div className="flex items-center justify-between pb-6">
+                          <p className="mb-0 mr-2">Don't an account?</p>
+                          <Link to="/register">
+                            {" "}
+                            <button
+                              style={{
+                                borderColor: "#BD9C1C",
+                                color: "#BD9C1C",
+                              }}
+                              type="button"
+                              className="inline-block px-6 py-2 border-2   font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                              data-mdb-ripple="true"
+                              data-mdb-ripple-color="light"
+                            >
+                              SignUp
+                            </button>
+                          </Link>
+                        </div>
                       </form>
                     </div>
                   </div>

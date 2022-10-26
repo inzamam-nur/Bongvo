@@ -29,7 +29,7 @@ const Header = () => {
                   // eslint-disable-next-line jsx-a11y/img-redundant-alt
                   <img className="rounded-full mr-5" style={{ height: "25px"}} src={user?.photoURL}  alt="user Image " />
                  : 
-                  < FaUserAlt className="align-middle"></FaUserAlt>
+                  < FaUserAlt className="align-middle mr-5 text-2xl"></FaUserAlt>
                 }
             <button onClick={handlelogout}>Logout</button>
             
