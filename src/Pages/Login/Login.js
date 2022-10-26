@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="">
-      <section className="h-full gradient-form bg-gray-200 mx-auto   md:h-screen align-middle ">
+    <div style={{alignItems:'center'}} className="">
+      <section   style={{ marginBottom: "300px",height:'100%',width:'100%',margin:'auto' }} 
+      className="h-full gradient-form bg-gray-200 mx-auto   md:h-screen align-middle ">
         <div className="container py-12 px-6 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="xl:w-10/12">

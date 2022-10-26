@@ -1,11 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { FaFacebookSquare, FaGithub, FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { useContext } from "react";
+import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
+  const {providerLogin}=useContext(AuthContext);
+  const googleProvider=new GoogleAuthProvider();
+  const handleGoogleSignUp=(email,password)=>
+  {
+    providerLogin(googleProvider)
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
   return (
-    <div className="">
-      <section className="h-full gradient-form bg-gray-200 mx-auto   md:h-screen align-middle ">
+    <div style={{alignItems:'center'}} className="">
+      <section 
+        style={{ marginBottom: "300px",height:'100%',width:'100%',margin:'auto' }}
+        className="h-full  bg-gray-200 lg:h-screen align-middle   md:h-screen align-middle "
+      >
         <div className="container py-12 px-6 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="xl:w-10/12">
@@ -57,16 +77,30 @@ const Register = () => {
                         </div>
                         <div className="text-center pt-1 mb-12 pb-1">
                           <button
-                            className="inline-block px-6 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                            style={{ backgroundColor: "rgb(189,156,28)" }}
+                            className="inline-block px-6 py-2.5  text-white font-medium text-xs leading-tight uppercase rounded shadow-md  hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
                             type="button"
                             data-mdb-ripple="true"
                             data-mdb-ripple-color="light"
                           >
-                            Log in
+                            SignUp
                           </button>
-                          <a className="text-gray-500" href="#!">
-                            Forgot password?
-                          </a>
+                          <div class="relative py-4">
+                            <div class="absolute inset-0 flex items-center">
+                              <div class="w-full border-b border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center">
+                              <span class="bg-white px-4 text-sm text-gray-500">
+                                SignUp With
+                              </span>
+                            </div>
+                          </div>
+                          <div className="btn-group">
+                          <FcGoogle onClick={handleGoogleSignUp} className="text-3xl mr-5"></FcGoogle>
+                            <FaFacebookSquare style={{color:'rgb(16,148,244)'}} className="text-3xl mr-5"></FaFacebookSquare>
+                            <FaGithub className="text-3xl mr-5"></FaGithub>
+                            
+                          </div>
                         </div>
                         <div className="flex items-center justify-between pb-6">
                           <p className="mb-0 mr-2">Have an account?</p>
