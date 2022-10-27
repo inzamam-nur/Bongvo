@@ -1,10 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookSquare, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
   const { providerLogin, userCreateemailpass } = useContext(AuthContext);
@@ -27,6 +26,17 @@ const Register = () => {
     })
   };
 
+  const githubProvider=new GithubAuthProvider();
+ const githubSignin=(email,password)=>{
+  providerLogin(githubProvider)
+  .then((result) => {
+    const user = result.user;
+    console.log(user);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+ }
   const googleProvider = new GoogleAuthProvider();
   const handleGoogleSignUp = (email, password) => {
     providerLogin(googleProvider)
@@ -129,7 +139,7 @@ const Register = () => {
                               style={{ color: "rgb(16,148,244)" }}
                               className="text-3xl mr-5"
                             ></FaFacebookSquare>
-                            <FaGithub className="text-3xl mr-5"></FaGithub>
+                            <FaGithub onClick={githubSignin} className="text-3xl mr-5"></FaGithub>
                           </div>
                         </div>
                         <div className="flex items-center justify-between pb-6">

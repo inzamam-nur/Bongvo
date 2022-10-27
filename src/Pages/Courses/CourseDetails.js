@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const CourseDetails = () => {
     const course = useLoaderData();
-    const { title, details, image_url, category_id } = course;
+    const { title, details, image_url } = course;
     return (
       <div>
         <div className="card lg:card-side bg-base-100  mb-5">

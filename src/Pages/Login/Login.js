@@ -1,25 +1,30 @@
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { emailpassSignin } = useContext(AuthContext);
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
-    const password=form.password.value;
-    emailpassSignin(email,password)
-    .then((result)=>{
-      const user = result.user;
-      console.log(user);
-      form.reset();
-    })
-    .catch((e)=>{
-      console.error(e)
-    })
-    console.log(email,password)
+    const password = form.password.value;
+    emailpassSignin(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        navigate(from,{replace:true})
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+    console.log(email, password);
   };
   return (
     <div style={{ alignItems: "center" }} className="">
@@ -53,7 +58,7 @@ const Login = () => {
                         <p className="mb-4">Please login to your account</p>
                         <div className="mb-4">
                           <input
-                          name="email"
+                            name="email"
                             type="email"
                             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="exampleFormControlInput1"
@@ -63,7 +68,7 @@ const Login = () => {
                         </div>
                         <div className="mb-4">
                           <input
-                          name="password"
+                            name="password"
                             type="password"
                             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="exampleFormControlInput1"
@@ -72,7 +77,7 @@ const Login = () => {
                           />
                         </div>
                         <div className="text-center pt-1 mb-12 pb-1">
-                        <div className="form-control mt-6">
+                          <div className="form-control mt-6">
                             <button
                               style={{ backgroundColor: "rgb(189,156,28)" }}
                               className="btn btn-primary border-none"
@@ -80,7 +85,6 @@ const Login = () => {
                               SignUp
                             </button>
                           </div>
-                         
                         </div>
                         <div className="flex items-center justify-between pb-6">
                           <p className="mb-0 mr-2">Don't an account?</p>

@@ -11,24 +11,17 @@ const Header = () => {
       .then(() => {})
       .catch((e) => {});
   };
-  const seeuser=()=>{
-    <h1>inzamam</h1>
-  }
+  const seeuser = () => {
+    <h1>inzamam</h1>;
+  };
   return (
     <div>
       <header>
         <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <a href="https://flowbite.com" className="flex items-center">
-              <img
-                src="https://flowbite.com/docs/images/logo.svg"
-                className="mr-3 h-6 sm:h-9"
-                alt="Flowbite Logo"
-              />
-              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                BonngVo
-              </span>
-            </a>
+            <Link to='/'><span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+              bongVo
+            </span></Link>
             <div className="flex items-center lg:order-2">
               {user?.uid ? (
                 <>
@@ -36,11 +29,17 @@ const Header = () => {
 
                   {user?.photoURL ? (
                     <>
-                      <img onMouseOver={seeuser} style={{ height: "30px"}} className='mr-5 rounded-full' src={user?.photoURL} alt="" />
+                      <img
+                        onMouseOver={seeuser}
+                        style={{ height: "30px" }}
+                        className="mr-5 rounded-full"
+                        src={user?.photoURL}
+                        alt=""
+                      />
                     </>
                   ) : (
                     <>
-                      <FaUserAlt  className="mr-5 rounded-full"></FaUserAlt>
+                      <FaUserAlt className="mr-5 rounded-full"></FaUserAlt>
                     </>
                   )}
                   <Link
@@ -116,22 +115,33 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/courses' className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                  <Link
+                    to="/courses"
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  >
                     Courses
                   </Link>
                 </li>
                 <li>
-                  <Link to='/blog' className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                  <Link
+                    to="/blog"
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  >
                     Blog
                   </Link>
                 </li>
 
                 <li>
-                  <Link to='/faq' className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">
+                  <Link
+                    to="/faq"
+                    className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                  >
                     FAQ
                   </Link>
                 </li>
               </ul>
+
+              <div className="form-control"></div>
             </div>
           </div>
         </nav>
