@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { FaFacebookSquare, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -7,7 +7,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { providerLogin } = useContext(AuthContext);
+  const location=useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const { providerLogin ,emailpassSignin} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [error, setError] = useState('');
+
+  /*  GithubAuthProvider  */
   const githubProvider=new GithubAuthProvider();
   const githubSignin=(email,password)=>{
    providerLogin(githubProvider)
@@ -19,8 +25,12 @@ const Login = () => {
      console.error(error);
    });
   }
+    /*  GithubAuthProvider  */
    const googleProvider = new GoogleAuthProvider();
+   
+   
    const handleGoogleSignUp = (email, password) => {
+  
      providerLogin(googleProvider)
        .then((result) => {
          const user = result.user;
@@ -30,12 +40,12 @@ const Login = () => {
          console.error(error);
        });
    };
+   
 
-  const navigate = useNavigate();
-  const { emailpassSignin } = useContext(AuthContext);
-  const location = useLocation();
 
-  const from = location.state?.from?.pathname || "/";
+
+
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -45,11 +55,13 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setError('');
         form.reset();
         navigate(from,{replace:true})
       })
       .catch((e) => {
         console.error(e);
+        setError(e.message);
       });
     console.log(email, password);
   };
@@ -112,6 +124,7 @@ const Login = () => {
                               SignUp
                             </button>
                           </div>
+                          <p className="text-red-600 d-block mb-2">{error}</p>
                           <div class="relative py-4">
                             <div class="absolute inset-0 flex items-center">
                               <div class="w-full border-b border-gray-300"></div>

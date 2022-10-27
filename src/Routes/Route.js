@@ -4,9 +4,11 @@ import Blog from "../Pages/Blog/Blog";
 import Checkoutpage from "../Pages/CheckOut/Checkoutpage";
 import Allcourse from "../Pages/Courses/Allcourse";
 import Courses from "../Pages/Courses/Courses";
+import Errorpage from "../Pages/ErrorPage/Errorpage";
 import Faq from "../Pages/Faq/Faq";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import Reacttopdf from "../Pages/Reacttopdf/Reacttopdf";
 import Register from "../Pages/Register/Register";
 import Privateroute from "./PrivateRoute/PrivateRoute";
 
@@ -14,6 +16,7 @@ export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<Errorpage></Errorpage>,
     children: [
       {
         path: "/",
@@ -36,20 +39,24 @@ export const routes = createBrowserRouter([
         element: <Faq></Faq>,
       },
       {
+        path: "/pdf",
+        element: <Reacttopdf></Reacttopdf>,
+      },
+      {
         path: "/checkout/:id",
         element: <Privateroute><Checkoutpage></Checkoutpage></Privateroute>,
-        loader:({params})=>fetch(`http://localhost:5000/checkout/${params.id}`)
+        loader:({params})=>fetch(`https://b610-lerning-platform-server-side-inzamam-nur.vercel.app/checkout/${params.id}`)
       },
     
       {
         path: "/courses",
         element: <Allcourse></Allcourse>,
-        loader:()=>fetch('http://localhost:5000/courses')
+        loader:()=>fetch('https://b610-lerning-platform-server-side-inzamam-nur.vercel.app/courses')
       },
       {
         path:'/course/:id',
         element:<Privateroute><Courses></Courses></Privateroute>,
-        loader:({params})=>fetch(`http://localhost:5000/course/${params.id}`)
+        loader:({params})=>fetch(`https://b610-lerning-platform-server-side-inzamam-nur.vercel.app/course/${params.id}`)
         
     },
    

@@ -1,10 +1,13 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Rightsidenav from "../Rightsidenav/Rightsidenav";
+import ReactDOM from "react-dom";
+import Pdf from "react-to-pdf";
+const ref = React.createRef();
 
 const Courses = () => {
   const course = useLoaderData();
-  const { id,title, image_url, details } = course;
+  const { id, title, image_url, details } = course;
   return (
     <div
       style={{
@@ -15,20 +18,11 @@ const Courses = () => {
       }}
       className="bg-gray-200"
     >
-      <div className="navbar bg-base-100">
-  <div className="navbar-start">
-
-  </div>
-
-  <div className="navbar-end">
-    <button className="btn">Download Pdf</button>
-  </div>
-</div>
       <div
         style={{ width: "80%", margin: "50px auto" }}
         className="grid grid-cols-3 gap-4"
       >
-        <div className="col-span-2 ...">
+        <div className="col-span-2  mt-5">
           <div>
             <div className="card lg:card-side bg-base-100  mb-5">
               <div
@@ -38,37 +32,52 @@ const Courses = () => {
                   color: "rgb(0,0,0)",
                 }}
               >
-                <figure>
+                <Pdf targetRef={ref} filename="code-example.pdf">
+                  {({ toPdf }) => (
+                    <button onClick={toPdf} className="btn btn-info">
+                      Download Pdf
+                    </button>
+                  )}
+                </Pdf>
+                <div ref={ref}>
                   <img
-                    style={{ height: "200px", width: "200px" }}
+                    style={{
+                      height: "200px",
+                      width: "500px",
+                      margin: "auto",
+                      paddingBottom: "30px",
+                    }}
                     src={image_url}
                     alt="Album"
                   />
-                </figure>
-                <div style={{ margin: "" }} className="text-center">
-                  {" "}
-                  <h2>{title}</h2>
-                  <p>{details}</p>
-                  <Link  to={`/checkout/${id}`}>
+
+                  <div style={{ margin: "" }} className="text-center">
                     {" "}
-                    <button className="mb-5 mt-5 btn btn-active  w-full">
-                      Get Premium Access
-                    </button>
-                  </Link>
-                  <Link className="mt-5" to='/courses'>
-                    {" "}
-                    <button  className="btn btn-active  w-full">
-                     GO Back
-                    </button>
-                  </Link>
+                    <h2 className="font-bold	">{title}</h2>
+                    <p style={{ marginRight: "100px" }}>{details}</p>
+                  </div>
                 </div>
+
+                <Link to={`/checkout/${id}`}>
+                  {" "}
+                  <button className="mb-5 mt-5 btn btn-active  w-full">
+                    Get Premium Access
+                  </button>
+                </Link>
+                <Link className="mt-5" to="/courses">
+                  {" "}
+                  <button className="btn btn-active  w-full">GO Back</button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        <div style={{ marginTop: "100px" }} className="text-center ">
-          <Rightsidenav></Rightsidenav>
-        </div>
+      </div>
+      <div
+        style={{ marginTop: "100px" }}
+        className="text-center hidden lg:block "
+      >
+        <Rightsidenav></Rightsidenav>
       </div>
     </div>
   );

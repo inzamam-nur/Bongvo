@@ -6,7 +6,7 @@ const Checkoutpage = () => {
   const { id,title} = course;
   
     return (
-        <div className='bg-base-100'>
+        <div style={{width:'50%',margin:'auto'}} className='bg-base-100'>
         
 <div className="leading-loose">
   <form className="max-w-xl m-4 p-10 bg-white rounded shadow-xl">

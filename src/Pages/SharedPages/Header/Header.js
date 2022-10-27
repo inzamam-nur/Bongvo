@@ -6,11 +6,13 @@ import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
+  const [darkToggle, setDarkToggle] = React.useState(false)
   const handlelogout = () => {
     logout()
       .then(() => {})
       .catch((e) => {});
   };
+ 
 
   return (
     <div>
@@ -33,9 +35,9 @@ const Header = () => {
                 />
               </svg>
             </label>
-            <ul
+            <ul 
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
             >
               <li>
                 <Link to="/">Home</Link>
@@ -49,11 +51,22 @@ const Header = () => {
               <li>
                 <Link to="/blog">Blog</Link>
               </li>
+              <li>
+              <label className="toggleDarkBtn lg:hidden ">
+        <input type="checkbox" onClick={() => setDarkToggle(!darkToggle)} />
+        <span className="slideBtnTg round"></span>
+      </label>
+              </li>
+              
             </ul>
           </div>
+          <Link to="/" className=" normal-case text-xl">
+            <img style={{height:'30px'}} src="https://i.ibb.co/S6qSDLY/Screenshot-6-removebg-preview.png" alt="" />
+          </Link>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
             bongVo
           </Link>
+          
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -106,6 +119,12 @@ const Header = () => {
               </Link>
             </>
           )}
+          <div className="ml-5 hidden lg:block">
+          <label className="toggleDarkBtn ">
+        <input type="checkbox" onClick={() => setDarkToggle(!darkToggle)} />
+        <span className="slideBtnTg round"></span>
+      </label>
+          </div>
         </div>
       </div>
     </div>

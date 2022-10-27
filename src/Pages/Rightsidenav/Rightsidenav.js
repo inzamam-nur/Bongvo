@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Rightsidenav = () => {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/coursename")
+    fetch("https://b610-lerning-platform-server-side-inzamam-nur.vercel.app/coursename")
       .then((res) => res.json())
       .then((data) => setCourses(data));
   }, []);
