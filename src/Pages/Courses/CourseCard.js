@@ -5,7 +5,7 @@ const CourseCard = ({ course }) => {
   const { id, title, image_url, details, tutor, rating } = course;
   return (
     <div>
-      <div className="card lg:card-side bg-base-100  mb-5">
+      <div className="card lg:card-side bg-base-100 mt-5 mb-5">
         <figure>
           <img src={image_url} alt="Album" />
         </figure>

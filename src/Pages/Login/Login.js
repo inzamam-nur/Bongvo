@@ -173,36 +173,22 @@ const Login = () => {
                     className="lg:w-6/12 flex items-center bg-orange-600 lg:rounded-r-lg rounded-b-lg lg:rounded-bl-none"
                   >
                     <div className="text-white px-4 py-6 md:p-12 md:mx-6">
-                      <h4 className="text-3xl font-semibold mb-6 text-black">
-                        Is this your first time here?
-                      </h4>
-                      <p className="text-sm text-black">
-                        To take part in courses on Bongvo you will need to
-                        create a free account. Do this by following the steps
-                        below.
-                      </p>
-                      <h4 className="text-xl font-semibold mb-6 text-black">
-                        Why do I need an account?
-                      </h4>
-                      <p className="text-sm text-black">
-                        We also need to know who is taking part in courses so
-                        that we can look at the impact of the courses we offer
-                        and make sure we are creating courses that you want to
-                        join.{" "}
-                      </p>
+                      
+                    
 
                       <h4 className="text-xl font-semibold mb-6 text-black">
-                        How do I create an account?
+                        Why bongvo
                       </h4>
                       <p className="text-sm text-black">
-                        1.Complete the registration form at
-                        localhost:3000/register <br />
-                        2.When you submit the form, an email will be sent to the
-                        email address you have given us <br />
-                        3.To confirm your registration, click the link in the
-                        email <br />
-                        4.Your account will be confirmed and you will be able to
-                        log in and start taking courses <br />
+                      The mission of the bongVo is to educate students in a student-centric dynamic
+                        learning environment; to provide advanced facilities for
+                        conducting innovative research and development to meet
+                        the challenges of the modern era of computing, and to
+                        motivate them towards a life-long learning process. To
+                        create highly skilled and globally competitive
+                        professionals with advanced theoretical and applied
+                        knowledge responsive to the needs of the society in the
+                        discipline of science and technology.
                       </p>
                     </div>
                   </div>
