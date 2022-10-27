@@ -17,10 +17,10 @@ const Faq = () => {
                 style={{ backgroundColor: "#F2F2EE" }}
                 className="text-2xl p-5 rounded"
               >
-                IS the course open for all
+                Is the course open for all
               </h2>
               <p className="text-xl p-5 rounded">
-                YEs IT is you just havversione to signup and create a profile
+                YEs It is you just have to signup and create a profile
                 after that you can also purchase premium{" "}
               </p>
             </div>
