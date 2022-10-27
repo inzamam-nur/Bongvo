@@ -4,7 +4,7 @@ import Rightsidenav from "../Rightsidenav/Rightsidenav";
 
 const Courses = () => {
   const course = useLoaderData();
-  const { title, image_url, details } = course;
+  const { id,title, image_url, details } = course;
   return (
     <div
       style={{
@@ -15,6 +15,15 @@ const Courses = () => {
       }}
       className="bg-gray-200"
     >
+      <div className="navbar bg-base-100">
+  <div className="navbar-start">
+
+  </div>
+
+  <div className="navbar-end">
+    <button className="btn">Download Pdf</button>
+  </div>
+</div>
       <div
         style={{ width: "80%", margin: "50px auto" }}
         className="grid grid-cols-3 gap-4"
@@ -40,10 +49,16 @@ const Courses = () => {
                   {" "}
                   <h2>{title}</h2>
                   <p>{details}</p>
-                  <Link to="/checkout">
+                  <Link  to={`/checkout/${id}`}>
                     {" "}
-                    <button className="btn btn-active btn-primary w-full">
+                    <button className="mb-5 mt-5 btn btn-active  w-full">
                       Get Premium Access
+                    </button>
+                  </Link>
+                  <Link className="mt-5" to='/courses'>
+                    {" "}
+                    <button  className="btn btn-active  w-full">
+                     GO Back
                     </button>
                   </Link>
                 </div>

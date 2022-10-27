@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
-import { FaFacebookSquare, FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
-import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-
 const Register = () => {
-  const { providerLogin, userCreateemailpass } = useContext(AuthContext);
+  const { userCreateemailpass,updateName } = useContext(AuthContext);
   const handleRegi = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,39 +11,25 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, Photourl, password);
-    userCreateemailpass(email,password)
-    .then((result)=>{
-      const user=result.user;
-      console.log(user)
-      form.reset();
-    })
-    .catch((e)=>{
-      console.error(e)
-    })
-  };
-
-  const githubProvider=new GithubAuthProvider();
- const githubSignin=(email,password)=>{
-  providerLogin(githubProvider)
-  .then((result) => {
-    const user = result.user;
-    console.log(user);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
- }
-  const googleProvider = new GoogleAuthProvider();
-  const handleGoogleSignUp = (email, password) => {
-    providerLogin(googleProvider)
+    userCreateemailpass(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        updateName(name)
+          .then(() => {
+            console.log('Name Updated')
+          })
+              .catch(error => {
+                console.error(error.message)
+              })
+         
+        form.reset();
       })
-      .catch((error) => {
-        console.error(error);
+      .catch((e) => {
+        console.error(e);
       });
   };
+
   return (
     <div style={{ alignItems: "center" }} className="">
       <section
@@ -79,7 +61,7 @@ const Register = () => {
                       <form onSubmit={handleRegi}>
                         <p className="mb-4">Please Register Your Account</p>
                         <div className="mb-4">
-                          <input 
+                          <input
                             type="text"
                             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             name="name"
@@ -88,7 +70,7 @@ const Register = () => {
                         </div>
                         <div className="mb-4">
                           <input
-                          name="Photourl"
+                            name="Photourl"
                             type="text"
                             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             placeholder="Photourl"
@@ -104,7 +86,7 @@ const Register = () => {
                         </div>
                         <div className="mb-4">
                           <input
-                          name="password"
+                            name="password"
                             type="password"
                             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             placeholder="Password"
@@ -118,28 +100,6 @@ const Register = () => {
                             >
                               SignUp
                             </button>
-                          </div>
-
-                          <div class="relative py-4">
-                            <div class="absolute inset-0 flex items-center">
-                              <div class="w-full border-b border-gray-300"></div>
-                            </div>
-                            <div class="relative flex justify-center">
-                              <span class="bg-white px-4 text-sm text-gray-500">
-                                SignUp With
-                              </span>
-                            </div>
-                          </div>
-                          <div className="btn-group">
-                            <FcGoogle
-                              onClick={handleGoogleSignUp}
-                              className="text-3xl mr-5"
-                            ></FcGoogle>
-                            <FaFacebookSquare
-                              style={{ color: "rgb(16,148,244)" }}
-                              className="text-3xl mr-5"
-                            ></FaFacebookSquare>
-                            <FaGithub onClick={githubSignin} className="text-3xl mr-5"></FaGithub>
                           </div>
                         </div>
                         <div className="flex items-center justify-between pb-6">

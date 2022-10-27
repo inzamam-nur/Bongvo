@@ -1,11 +1,37 @@
-import React from 'react';
+import React from "react";
 
 const Faq = () => {
-    return (
+  return (
+    <div>
+      <div style={{ width: "50%", margin: "auto" ,padding:'50px'}} className="bg-white text-black	">
+        <h2 className="text-3xl text-center m-5 pb-5">Frequently Asked Questions</h2>
         <div>
-            <h2>Faq Page</h2>
+          <h2 className="text-2xl">What is Your Question</h2>
+          <p className="text-xl">Here is Your Answer</p>
         </div>
-    );
+        <div>
+          <h2 className="text-2xl">What is Your Question</h2>
+          <p className="text-xl">Here is Your Answer</p>
+        </div>
+        <div>
+          <h2 className="text-2xl">What is Your Question</h2>
+          <p className="text-xl">Here is Your Answer</p>
+        </div>
+        <div>
+          <h2 className="text-2xl">What is Your Question</h2>
+          <p className="text-xl">Here is Your Answer</p>
+        </div>
+        <div>
+          <h2 className="text-2xl">What is Your Question</h2>
+          <p className="text-xl">Here is Your Answer</p>
+        </div>
+        <div>
+          <h2 className="text-2xl">What is Your Question</h2>
+          <p className="text-xl">Here is Your Answer</p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Faq;

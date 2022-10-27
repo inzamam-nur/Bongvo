@@ -1,9 +1,36 @@
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { useContext } from "react";
+import { FaFacebookSquare, FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { providerLogin } = useContext(AuthContext);
+  const githubProvider=new GithubAuthProvider();
+  const githubSignin=(email,password)=>{
+   providerLogin(githubProvider)
+   .then((result) => {
+     const user = result.user;
+     console.log(user);
+   })
+   .catch((error) => {
+     console.error(error);
+   });
+  }
+   const googleProvider = new GoogleAuthProvider();
+   const handleGoogleSignUp = (email, password) => {
+     providerLogin(googleProvider)
+       .then((result) => {
+         const user = result.user;
+         console.log(user);
+       })
+       .catch((error) => {
+         console.error(error);
+       });
+   };
+
   const navigate = useNavigate();
   const { emailpassSignin } = useContext(AuthContext);
   const location = useLocation();
@@ -84,6 +111,27 @@ const Login = () => {
                             >
                               SignUp
                             </button>
+                          </div>
+                          <div class="relative py-4">
+                            <div class="absolute inset-0 flex items-center">
+                              <div class="w-full border-b border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center">
+                              <span class="bg-white px-4 text-sm text-gray-500">
+                                SignIn With
+                              </span>
+                            </div>
+                          </div>
+                          <div className="btn-group">
+                            <FcGoogle
+                              onClick={handleGoogleSignUp}
+                              className="text-3xl mr-5"
+                            ></FcGoogle>
+                            <FaFacebookSquare
+                              style={{ color: "rgb(16,148,244)" }}
+                              className="text-3xl mr-5"
+                            ></FaFacebookSquare>
+                            <FaGithub onClick={githubSignin} className="text-3xl mr-5"></FaGithub>
                           </div>
                         </div>
                         <div className="flex items-center justify-between pb-6">
