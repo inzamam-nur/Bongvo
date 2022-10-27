@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Rightsidenav from "../Rightsidenav/Rightsidenav";
 
 const Courses = () => {
@@ -40,6 +40,12 @@ const Courses = () => {
                   {" "}
                   <h2>{title}</h2>
                   <p>{details}</p>
+                  <Link to="/checkout">
+                    {" "}
+                    <button className="btn btn-active btn-primary w-full">
+                      Get Premium Access
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
