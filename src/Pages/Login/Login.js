@@ -121,7 +121,7 @@ const Login = () => {
                               style={{ backgroundColor: "rgb(189,156,28)" }}
                               className="btn btn-primary border-none"
                             >
-                              SignUp
+                              SignIn
                             </button>
                           </div>
                           <p className="text-red-600 d-block mb-2">{error}</p>
