@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Rightsidenav from "../Rightsidenav/Rightsidenav";
-import ReactDOM from "react-dom";
 import Pdf from "react-to-pdf";
 const ref = React.createRef();
 
@@ -9,20 +8,22 @@ const Courses = () => {
   const course = useLoaderData();
   const { id, title, image_url, details } = course;
   return (
-    <div
-      style={{
-        marginBottom: "300px",
-        height: "100%",
-        width: "100%",
-        margin: "auto",
-      }}
-      className="bg-gray-200"
-    >
+    <div>
       <div
-        style={{ width: "80%", margin: "50px auto" }}
-        className="grid grid-cols-3 gap-4"
+        style={{
+          marginBottom: "300px",
+          height: "100%",
+          width: "100%",
+          margin: "auto",
+        }}
+        className="bg-gray-200"
       >
-        <div className="col-span-2  mt-5">
+        <div
+          style={{ width: "80%", margin: "50px auto" }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-4"
+        >
+          <div className=" col-span-2 ...">
+          <div className="col-span-2  mt-5">
           <div>
             <div className="card lg:card-side bg-base-100  mb-5">
               <div
@@ -32,14 +33,14 @@ const Courses = () => {
                   color: "rgb(0,0,0)",
                 }}
               >
-                <Pdf targetRef={ref} filename="code-example.pdf">
+                <Pdf  targetRef={ref} filename="code-example.pdf">
                   {({ toPdf }) => (
                     <button onClick={toPdf} className="btn btn-info">
                       Download Pdf
                     </button>
                   )}
                 </Pdf>
-                <div ref={ref}>
+                <div  ref={ref}>
                   <img
                     style={{
                       height: "200px",
@@ -54,7 +55,7 @@ const Courses = () => {
                   <div style={{ margin: "" }} className="text-center">
                     {" "}
                     <h2 className="font-bold	">{title}</h2>
-                    <p style={{ marginRight: "100px" }}>{details}</p>
+                    <p >{details}</p>
                   </div>
                 </div>
 
@@ -72,14 +73,17 @@ const Courses = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div
-        style={{ marginTop: "100px" }}
-        className="text-center hidden lg:block "
-      >
-        <Rightsidenav></Rightsidenav>
+          </div>
+          <div
+            className="hidden lg:block"
+            style={{ width: "80%", margin: "50px auto" }}
+          >
+            <Rightsidenav></Rightsidenav>
+          </div>
+        </div>
       </div>
     </div>
+    
   );
 };
 

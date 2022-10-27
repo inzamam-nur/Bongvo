@@ -21,12 +21,14 @@ const Allcourse = () => {
           className="grid grid-cols-1 lg:grid-cols-3 gap-4"
         >
           <div className=" col-span-2 ...">
-            <h2>THis is from course : {Courses.length}</h2>
             {Courses.map((course) => (
               <CourseCard key={course.id} course={course}></CourseCard>
             ))}
           </div>
-          <div className="hidden lg:block" style={{ width: "80%", margin: "50px auto" }}>
+          <div
+            className="hidden lg:block"
+            style={{ width: "80%", margin: "50px auto" }}
+          >
             <Rightsidenav></Rightsidenav>
           </div>
         </div>
